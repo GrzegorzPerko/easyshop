@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 interface IViewComponent {
-    view: string
+    props: string
 }
 export const ProductItem = styled.div<IViewComponent>`
     display: block;
@@ -8,8 +8,8 @@ export const ProductItem = styled.div<IViewComponent>`
     padding: 0 20px;
     position: relative;
     text-align: center;
-    width: ${view => (view.view !== 'list' ? '23.5%' : '100%')} ;
-    text-align: ${view => (view.view !== 'list' ? 'center' : 'left')} ;
+    width: ${props => (props.style !== 'list' ? '23.5%' : '100%')} ;
+    text-align: ${props => (props.style !== 'list' ? 'center' : 'left')} ;
     margin-right: 2%;
     margin-bottom: 20px;
     &:nth-child(4n) {
@@ -17,8 +17,8 @@ export const ProductItem = styled.div<IViewComponent>`
     }
 
     figure {
-        float: ${view => (view.view !== 'list' ? 'none' : 'left')} ;
-        width: ${view => (view.view !== 'list' ? '100%' : 'auto')} ;
+        float: ${props => (props.style !== 'list' ? 'none' : 'left')} ;
+        width: ${props => (props.style !== 'list' ? '100%' : 'auto')} ;
     }
 `
 export const ProductLink = styled.a`

@@ -1,7 +1,7 @@
 import * as React from 'react'
 import ProductsList from '../../Shared/ProductsList/ProductsList'
 
-const ProductPage = () => {
+const ProductsPage = () => {
     return (
         <>
             <ProductsList></ProductsList>
@@ -9,4 +9,4 @@ const ProductPage = () => {
     )
 }
 
-export default ProductPage
+export default ProductsPage

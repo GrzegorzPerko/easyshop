@@ -8,23 +8,28 @@ export const ProductsListWrapper = styled.section`
 `
 export const ProductsListHeader = styled.header`
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
 `
 export const ProductsListHeadline = styled.h2`
+    width: 200px;
 `
 export const ProductsListButtonsView = styled.div`
+`
+export const ProductsFilter = styled.div`
+    width: 200px;
 `
 export const ProductsListBox = styled.div<IProductBox>`
     display: ${viewComponent => (viewComponent.viewComponent === "list" ? 'block': 'flex')};
     flex-wrap: wrap;
 `
 export const ProductsListButton = styled.button`
-    width: 50px;
-    height: 50px;
+    width: 38px;
+    height: 38px;
     text-align: center;
     font-size: 20px;
     background: none;
-    border: 1px solid #8e8d8a;
+    border: 1px solid hsl(0,0%,80%);
     color: #8e8d8a;
     font-weight: normal;
     border-radius: 4px 0 0 4px;

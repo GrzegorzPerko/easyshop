@@ -14,3 +14,7 @@ export const ABOUTUS = {
   name: 'About us', 
   url: '/aboutus', 
 };
+export const PRODUCTPAGE = {
+  name: 'Product page',
+  url: '/product/:id'
+}

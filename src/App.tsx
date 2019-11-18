@@ -3,18 +3,20 @@ import { BrowserRouter as Router, Switch, Route, Link, RouteComponentProps } fro
 import * as S from './styled'
 import * as ROUTES from './routes/routes'
 // components
-import NavHeader from './components/shop/Header/Header'
-import NavFooter from './components/shop/Footer/Footer'
+import NavHeader from './components/Header/Header'
+import NavFooter from './components/Footer/Footer'
 // pages
-import HomePage from './components/shop/Pages/Home/Home'
-import ProductsPage from './components/shop/Pages/Products/Products'
-import ProductPage from './components/shop/Pages/ProductPage/ProductPage'
-import LastestPage from './components/shop/Pages/Lastest/Lastest'
-import AboutusPage from './components/shop/Pages/AboutUs/AboutUs'
+import HomePage from './components/Pages/Home/Home'
+import ProductsPage from './components/Pages/Products/Products'
+import ProductPage from './components/Pages/ProductPage/ProductPage'
+import LastestPage from './components/Pages/Lastest/Lastest'
+import AboutusPage from './components/Pages/AboutUs/AboutUs'
+
 
 interface IMatchProps {
   name: string;
 }
+
 const App = () => {
   return (
     <>

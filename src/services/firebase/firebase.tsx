@@ -19,6 +19,7 @@ const getFooterItems = () => {
   });
 }
 
+
 export const firebaseService = {
   getProducts,
   getFooterItems

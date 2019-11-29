@@ -2,13 +2,15 @@ import styled from 'styled-components'
 import { createGlobalStyle } from "styled-components"
 
 export const GlobalStyle = createGlobalStyle`
-  @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap');
-
+  @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700&display=swap&subset=latin-ext');
+    
   body {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
     color: #1b1b1b;
-    font-size: 13px;
+    font-size: 14px;
     line-height: 1.8;
+    background: #f4f3ee;
+    margin: 0;
   }
 
   * {

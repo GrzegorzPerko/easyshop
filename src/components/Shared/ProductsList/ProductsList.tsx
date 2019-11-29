@@ -10,7 +10,7 @@ import Loader from '../../Shared/Loader/Loader'
 
 import { firebaseService } from '../../../services/firebase/firebase'
 // utils
-import * as Utlis from './utils'
+import * as Utils from './utils'
 
 // icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -18,11 +18,14 @@ import { faBars, faThLarge } from '@fortawesome/free-solid-svg-icons'
 
 // styles
 import * as S from './styled'
+import { IProductItem } from '../../../typings/product/product'
 
 const ProductsList = () => {
-	const [productList, setProductList] = useState<undefined | IProductItem[]>(undefined)
-	const [productView, setProductView] = useState<boolean>(false)
+
+	const [productList, setProductList] = useState<IProductItem[]>([])
+	const [productView, setProductView] = useState<boolean>(true)
 	const [productFilter, setProductFilter] = useState<string>('default')
+	const [isLoading, setIsLoading] = useState<boolean>(false)
 
 	const filterOptions = [
 		{ value: 'default', label: 'Default order'},
@@ -31,12 +34,11 @@ const ProductsList = () => {
 		{ value: 'news', label: 'Newest'},
 	]
 
-	const sortProducts = () => {
-	}
 
 	useEffect(() => {
-		firebaseService.getProducts().then((data)=> {
-			setProductList(Utlis.productFilter(productFilter, filterOptions, data))
+		firebaseService.getProducts().then((data: IProductItem[])=> {
+			setProductList(Utils.productFilter(productFilter, data))
+			setIsLoading(true)
 		})
 	}, []);
 
@@ -47,10 +49,13 @@ const ProductsList = () => {
 		setProductView(true)
 	}
 
+	let filteredProducts = Utils.productFilter('default', productList)
 	const handleChangeFilter = (event: any) => {
 		setProductFilter(event.value)
-		setProductList(Utlis.productFilter(event.value, filterOptions, productList))
+		filteredProducts = Utils.productFilter(event.value, productList)
 	}
+
+
 	return (
 		<>
 			<S.ProductsListWrapper>
@@ -59,19 +64,19 @@ const ProductsList = () => {
 						Products
 					</S.ProductsListHeadline>
 					<S.ProductsListButtonsView>
-						<S.ProductsListButton aria-label="list view" onClick={handleClickList}><FontAwesomeIcon icon={faBars}></FontAwesomeIcon></S.ProductsListButton>
-						<S.ProductsListButton aria-label="column view" onClick={handleClickColumn}><FontAwesomeIcon icon={faThLarge}></FontAwesomeIcon></S.ProductsListButton>
+						<S.ProductsListButton active={productView} aria-label="column view" onClick={handleClickColumn}><FontAwesomeIcon icon={faThLarge}></FontAwesomeIcon></S.ProductsListButton>
+						<S.ProductsListButton active={!productView} aria-label="list view" onClick={handleClickList}><FontAwesomeIcon icon={faBars}></FontAwesomeIcon></S.ProductsListButton>
 					</S.ProductsListButtonsView> 
 					<S.ProductsFilter>
-  					<Select options={filterOptions} onChange={handleChangeFilter}/>
+  					<Select defaultValue={{value: 'default', label: 'Default order'}} options={filterOptions} onChange={handleChangeFilter}/>
 					</S.ProductsFilter>
 				</S.ProductsListHeader>
-				<S.ProductsListBox viewComponent={productView ? 'list' : 'column'}>
+				<S.ProductsListBox view={productView ? 'column'  : 'list'}>
 				{
-					productList !== undefined ?
-					productList.length > 0 ? productList.map(product => (
-						<ProductItem value={product} viewComponent={productView ? 'list' : 'column'}></ProductItem>
-					)) : <ErrorStatus error={'Brak produktów'} message={'Nie stety nie znaleźliśmy żadnych produktów'} /> :
+					isLoading ? (
+						filteredProducts.length > 0 ? filteredProducts.map(product => (
+						<ProductItem value={product} viewComponent={productView ? 'column'  : 'list'}></ProductItem>
+					)) : <ErrorStatus error={'Brak produktów'} message={'Nie stety nie znaleźliśmy żadnych produktów'} /> ):
 					(<Loader />)
 				}
 				</S.ProductsListBox>

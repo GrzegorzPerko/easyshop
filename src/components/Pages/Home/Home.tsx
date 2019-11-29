@@ -11,6 +11,7 @@ import  { FirebaseContext } from '../../../firebase/index'
 import * as S from './styled'
 
 const HomePage = () => {
+    console.log(process.env);
     return (
         <S.MainSite>
             <S.ContentSite>

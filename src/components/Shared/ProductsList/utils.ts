@@ -16,20 +16,19 @@ interface IFilterOption {
 }
 
 
-export const productFilter = (filter: string, options: IFilterOption[],  products: IProductItem[] | undefined) => {
-  let sortedProducts;
-  if(products !== undefined) {
-    console.log(filter)
+export const productFilter = (filter: string,  products: IProductItem[]) => {
+  let sortedProducts: IProductItem[] = [];
+  if(products.length > 0) {
     switch(filter) {
       case 'price_high': 
         sortedProducts = products.sort((a: IProductItem, b: IProductItem) => {
-          return a.price - b.price
+          return b.price - a.price 
         })
       return sortedProducts
 
       case 'price_low':
           sortedProducts = products.sort((a: IProductItem, b: IProductItem) => {
-            return a.price + b.price
+            return a.price - b.price
           })
       return sortedProducts
 
@@ -41,10 +40,9 @@ export const productFilter = (filter: string, options: IFilterOption[],  product
         sortedProducts = products.sort((a: IProductItem, b: IProductItem) => {
           const f = new Date(a.dataCreated).getTime()
           const s = new Date(b.dataCreated).getTime()
-          return f - s
+          return  s - f
         })
       return sortedProducts
-
     }
   }
   return sortedProducts

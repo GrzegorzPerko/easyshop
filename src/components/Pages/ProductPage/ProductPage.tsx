@@ -12,6 +12,7 @@ import { firebaseService } from '../../../services/firebase/firebase'
 
 // styles
 import * as S from './styled'
+import { IProductItem } from '../../../typings/product/product'
 
 interface IParams {
   id: string

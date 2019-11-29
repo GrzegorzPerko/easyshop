@@ -1,24 +1,31 @@
 import styled from 'styled-components'
 interface IViewComponent {
-    props: string
+    view: string
 }
 export const ProductItem = styled.div<IViewComponent>`
     display: block;
     border: 1px solid #8e8d8a;
     padding: 0 20px;
+    background: #FFF;
     position: relative;
+    overflow: hidden;
     text-align: center;
-    width: ${props => (props.style !== 'list' ? '23.5%' : '100%')} ;
-    text-align: ${props => (props.style !== 'list' ? 'center' : 'left')} ;
+    width: ${props => (props.view === 'list' ?'100%' : '23.5%' )} ;
+    text-align: ${props => (props.view === 'list' ? 'left' : 'center')} ;
     margin-right: 2%;
     margin-bottom: 20px;
     &:nth-child(4n) {
         margin-right: 0;
     }
 
+    a {
+        color: #1b1b1b;
+        text-decoration: none;
+    }
+
     figure {
-        float: ${props => (props.style !== 'list' ? 'none' : 'left')} ;
-        width: ${props => (props.style !== 'list' ? '100%' : 'auto')} ;
+        float: ${props => (props.view === 'list' ? 'left' : 'none')} ;
+        width: ${props => (props.view === 'list' ? '200px' : '100%')} ;
     }
 `
 export const ProductLink = styled.a`

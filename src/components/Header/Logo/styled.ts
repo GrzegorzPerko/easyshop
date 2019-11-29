@@ -1,13 +1,20 @@
 import styled from 'styled-components'
 
-export const HeaderLogoLink = styled.a`
-    width: 200px;
-    height: 200px;
+export const LogoLink = styled.a`
+    width: 150px;
     display: block;
-    margin: 0 auto;
+    margin: 10px auto 20px;
 
-    img {
-        display: block;
-        max-width: 100%;
-    }
+`
+
+export const LogoImg = styled.img`
+    display: block;
+    max-width: 100%;
+`
+
+export const LogoTitle = styled.span`
+    display: block;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
 `

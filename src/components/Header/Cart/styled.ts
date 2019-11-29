@@ -1,24 +1,24 @@
 import styled from 'styled-components'
 
-export const WrapperCart = styled.div`
+export const WrapperCart = styled.a`
     position: absolute;
-    right: 20px;
-    top: 80px;
-    padding-right: 60px;
+    right: 0px;
+    top: 135px;
     text-align: left;
+    color: #1b1b1b;
+    display: flex;
+    vertical-align: middle;
 `
+
 export const IconCart = styled.img`
-    width: 40px;
-    position: absolute;
-    top: 0;
-    opacity: 0.4;
-    right: 0;
+    width: 24px;
+    color: #1b1b1b;
+    margin-right: 10px;
 `
-export const TitleCart = styled.strong`
-    font-size: 16px;
+
+export const TitleCart = styled.span`
     display: block;
-`
-export const ContentCart = styled.span`
-    display: block;
-    font-size: 14px;
+    text-transform:uppercase;
+    font-weight: bold;
+    color: #8e8d8a;
 `

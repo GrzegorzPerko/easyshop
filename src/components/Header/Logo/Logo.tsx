@@ -6,9 +6,10 @@ import logo from '../../../logo.png'
 
 const NavLogo = () => {
     return (
-        <S.HeaderLogoLink>
-            <img src={logo} alt="Easy shop of the brand logo"/>
-        </S.HeaderLogoLink>
+        <S.LogoLink>
+            <S.LogoImg src={logo} alt="Easy shop of the brand logo"/>
+            <S.LogoTitle>E-commerce website</S.LogoTitle>
+        </S.LogoLink>
     )
 }
 

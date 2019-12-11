@@ -29,6 +29,7 @@ const NavFooter = () => {
 
 	return (
 		<S.FooterWrapper>
+			<S.Inner>
 			{
 				settings !== undefined ? 
 				( 
@@ -47,6 +48,7 @@ const NavFooter = () => {
 				) :
 				('no loaded')
 			}
+			</S.Inner>
 		</S.FooterWrapper>
 	)
 }

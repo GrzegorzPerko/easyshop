@@ -16,8 +16,8 @@ const NavMain = ({ props, type }: INavMain) => {
               <S.NavList props="header">
                 {
                   routes.map((route)=> {
-                    const isMenu = route[1].menu.some((item) => (item == 'header'))
-                    return isMenu == true && (
+                    const isMenu = route[1].menu.some((item) => (item === 'header'))
+                    return isMenu === true && (
                       <> 
                         <S.NavItem props="header"> 
                           <ItemNav route={route[1]}/>  
@@ -33,8 +33,8 @@ const NavMain = ({ props, type }: INavMain) => {
               <S.NavList>
                 {
                   Object.entries(ROUTES).map((route)=> {
-                    const isMenu = route[1].menu.some((item) => (item == 'footer'))
-                    return isMenu == true && (
+                    const isMenu = route[1].menu.some((item) => (item === 'footer'))
+                    return isMenu === true && (
                       <> 
                       <S.NavItem >
                         <ItemNav route={route[1]}/>

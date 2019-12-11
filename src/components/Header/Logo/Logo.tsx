@@ -2,7 +2,7 @@ import * as React from 'react'
 import * as S from './styled'
 
 // icon
-import logo from '../../../logo.png'
+import logo from '../../../assets/img/logo.png'
 
 const NavLogo = () => {
     return (

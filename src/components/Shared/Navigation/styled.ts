@@ -32,6 +32,6 @@ export const NavItem = styled.li<INavType>`
         }
     }
 `
-export const NavHeadline = styled.h3`
+export const NavHeadline = styled.h2`
     display: block;
 `

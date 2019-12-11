@@ -28,13 +28,14 @@ export const ProductsFilter = styled.div`
 export const ProductsListBox = styled.div<IProductBox>`
     display: ${props => (props.view === "list" ? 'block': 'flex')};
     flex-wrap: wrap;
+    margin-bottom: 20px;
 `
 export const ProductsListButton = styled.button<IProductButtonView>`
     width: 38px;
     height: 38px;
     text-align: center;
     font-size: 20px;
-    background: none;
+    background: #FFF;
     border: 1px solid hsl(0,0%,80%);
     color: ${props => (props.active ? '#1b1b1b': '#8e8d8a')};
     font-weight: normal;

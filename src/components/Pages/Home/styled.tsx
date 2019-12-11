@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const MainSite = styled.main`
+export const MainSite = styled.section`
     display: flex;
     flex-wrap: wrap;
 `

@@ -13,10 +13,12 @@ import * as ROUTES  from '../../routes/routes';
 const NavHeader = () => {
   return (
     <S.HeaderWrapper>
-      <SearchBox />
-      <CartBox />
-      <Logo />
-      <Navigation props={ROUTES} type='header' />
+      <S.Inner>
+        <SearchBox />
+        <CartBox />
+        <Logo />
+        <Navigation props={ROUTES} type='header' />
+      </S.Inner>
     </S.HeaderWrapper>
   )
 }

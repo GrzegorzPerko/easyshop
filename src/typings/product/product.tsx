@@ -1,7 +1,7 @@
 export interface IProductItem {
 	category: number
 	description: string
-	id: number
+	id: string
   dataCreated: string
 	image: string
 	name: string

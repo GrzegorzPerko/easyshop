@@ -13,6 +13,9 @@ import { firebaseService } from '../../../services/firebase/firebase'
 // styles
 import * as S from './styled'
 import { IProductItem } from '../../../typings/product/product'
+import { addProduct } from '../../redux/cart/actions'
+import { useDispatch } from 'react-redux'
+import { CartProduct } from '../../redux/cart/action-types'
 
 interface IParams {
   id: string
@@ -21,17 +24,28 @@ interface IParams {
 const ProductPage = () => {
   const params = useParams() as IParams
   const [ productData , setProductData] = useState<undefined | IProductItem | boolean>(undefined)
+  const dispatch = useDispatch()
+  const handlerAdd = (product: IProductItem) => {
+    const productCart: CartProduct = {
+      id: product.id,
+      title: product.name,
+      amount: 1
+    }
+    dispatch(addProduct(productCart))
+  }
+
 	useEffect(() => {
 		firebaseService.getProducts().then((products: Array<IProductItem>)=> {
         products.forEach(element => {
-        if(element.id == parseInt(params.id)) {
+        if(element.id == params.id) {
           setProductData(element)
         }
       });
     }).catch(() =>{
       setProductData(false)
     })
-	}, []);
+  }, []);
+  
   return (
     <>
       {
@@ -60,7 +74,7 @@ const ProductPage = () => {
                 </S.ProductAvaiable>
                 <Select>
                 </Select>
-                <S.ProductButtonAdd>
+                <S.ProductButtonAdd onClick={() => { handlerAdd(productData) }}>
                   Add to cart
                 </S.ProductButtonAdd>
               </S.ProductContent>

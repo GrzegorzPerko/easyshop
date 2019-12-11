@@ -15,26 +15,25 @@ interface INewsGetData {
 }
 
 const NewsPage = () => {
+	const [ posts, setPosts ] = useState([] as Array<INewsGetData>)
 
-    const [ posts, setPosts ] = useState([] as Array<INewsGetData>)
-
-    const fetchPosts = async () => {
-        const [error, posts] = await awaitTo(Service.placeholderService.getPosts())
-        if( error ) return
-        return posts
-    }
-    return (
-        <>
-            <main>
-                <h1>Aktualności</h1>
-                {
-                    posts.map((item, index:number) => ( 
-                            <div>{item.title}</div> 
-                    ))
-                }
-            </main>
-        </>
-    )
+	const fetchPosts = async () => {
+		const [error, posts] = await awaitTo(Service.placeholderService.getPosts())
+		if( error ) return
+		return posts
+	}
+	return (
+		<>
+		<article>
+			<h1>Aktualności</h1>
+			{
+					posts.map((item, index:number) => ( 
+									<div>{item.title}</div> 
+					))
+			}
+			</article>
+		</>
+	)
 }
 
 export default NewsPage

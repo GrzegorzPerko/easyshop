@@ -19,8 +19,14 @@ const getFooterItems = () => {
   });
 }
 
+const postNewsletterEmail = (email: string) => {
+  const newsletter = firebase.database().ref('newsletter')
+  newsletter.push({ email }).then(data => data).catch(error => error)
+}          
 
+                                                      
 export const firebaseService = {
   getProducts,
-  getFooterItems
+  getFooterItems,
+  postNewsletterEmail
 }

@@ -1,20 +1,4 @@
-interface IProductItem {
-  category: number
-  description: string
-  id: number
-  image: string
-  name: string
-  dataCreated: string
-  price: number
-  pricePromo: number
-  promo: number
-}
-
-interface IFilterOption {
-	value: string,
-	label: string
-}
-
+import { IProductItem } from "../../../typings/product/product";
 
 export const productFilter = (filter: string,  products: IProductItem[]) => {
   let sortedProducts: IProductItem[] = [];

@@ -4,7 +4,7 @@ interface IViewComponent {
 }
 export const ProductItem = styled.div<IViewComponent>`
     display: block;
-    border: 1px solid #8e8d8a;
+    box-shadow: 0 0 20px rgba(0,0,0,0.3);
     padding: 0 20px;
     background: #FFF;
     position: relative;

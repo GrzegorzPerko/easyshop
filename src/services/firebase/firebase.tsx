@@ -24,9 +24,15 @@ const postNewsletterEmail = (email: string) => {
   newsletter.push({ email }).then(data => data).catch(error => error)
 }          
 
+const getImageProduct = (path: string) => {
+	const image = firebase.storage().ref('ProductImages').child(path)
+  return image
+}
+
                                                       
 export const firebaseService = {
   getProducts,
   getFooterItems,
+  getImageProduct,
   postNewsletterEmail
 }

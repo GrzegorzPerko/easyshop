@@ -1,6 +1,6 @@
 import * as React from 'react'
 import * as S from './styled'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 
 // firebase
 import { firebaseService } from '../../../services/firebase/firebase'

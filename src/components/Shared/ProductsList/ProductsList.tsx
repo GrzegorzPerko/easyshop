@@ -21,12 +21,6 @@ import * as S from './styled'
 import { IProductItem } from '../../../typings/product/product'
 
 const ProductsList = () => {
-
-	const [productList, setProductList] = useState<IProductItem[]>([])
-	const [productView, setProductView] = useState<boolean>(true)
-	const [productFilter, setProductFilter] = useState<string>('default')
-	const [isLoading, setIsLoading] = useState<boolean>(false)
-
 	const filterOptions = [
 		{ value: 'default', label: 'Default order'},
 		{ value: 'price_high', label: 'Price ascending'},
@@ -34,13 +28,10 @@ const ProductsList = () => {
 		{ value: 'news', label: 'Newest'},
 	]
 
-
-	useEffect(() => {
-		firebaseService.getProducts().then((data: IProductItem[])=> {
-			setProductList(Utils.productFilter(productFilter, data))
-			setIsLoading(true)
-		})
-	}, []);
+	const [productList, setProductList] = useState<IProductItem[]>([])
+	const [productView, setProductView] = useState<boolean>(true)
+	const [isLoading, setIsLoading] = useState<boolean>(false)
+	const [productFilter, setProductFilter] = useState<string>(filterOptions[0].value)
 
 	const handleClickList = () => {
 		setProductView(false)
@@ -48,12 +39,25 @@ const ProductsList = () => {
 	const handleClickColumn = () => {
 		setProductView(true)
 	}
-
-	let filteredProducts = Utils.productFilter('default', productList)
+	
 	const handleChangeFilter = (event: any) => {
 		setProductFilter(event.value)
-		filteredProducts = Utils.productFilter(event.value, productList)
+		if(event.value === 'default') {
+		firebaseService.getProducts().then((data: IProductItem[])=> {
+		setProductList(Utils.filterProduct(productFilter, data))
+			})
+		} else {
+			setProductList(Utils.filterProduct(event.value, productList))
+		}
 	}
+
+
+	useEffect(() => {
+		firebaseService.getProducts().then((data: IProductItem[])=> {
+			setProductList(Utils.filterProduct(productFilter, data))
+			setIsLoading(true)
+		})
+	}, [isLoading, productFilter]);
 
 
 	return (
@@ -74,9 +78,9 @@ const ProductsList = () => {
 				<S.ProductsListBox view={productView ? 'column'  : 'list'}>
 				{
 					isLoading ? (
-						filteredProducts.length > 0 ? filteredProducts.map(product => (
-						<ProductItem value={product} viewComponent={productView ? 'column'  : 'list'}></ProductItem>
-					)) : <ErrorStatus error={'Brak produktów'} message={'Nie stety nie znaleźliśmy żadnych produktów'} /> ):
+						productList.length > 0 ? productList.map(product => 
+							<ProductItem props={product} viewComponent={productView ? 'column'  : 'list'}></ProductItem>
+					) : <ErrorStatus error={'Brak produktów'} message={'Nie stety nie znaleźliśmy żadnych produktów'} /> ):
 					(<Loader />)
 				}
 				</S.ProductsListBox>

@@ -4,7 +4,9 @@ import * as S from './styled'
 const Account = () => {
   return (
     <>
-    // Account
+      <S.Wrapper>
+        
+      </S.Wrapper>
     </>
   )
 }

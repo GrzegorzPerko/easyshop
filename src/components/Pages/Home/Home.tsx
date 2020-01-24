@@ -4,9 +4,6 @@ import * as React from 'react'
 import Banner from '../../Shared/Banner/Banner'
 import ProductsList from '../../Shared/ProductsList/ProductsList'
 
-// firebase
-import  { FirebaseContext } from '../../../firebase/index'
-
 // style
 import * as S from './styled'
 

@@ -26,6 +26,7 @@ export const TitleCart = styled.span`
     color: #8e8d8a;
 `
 export const LinkCart = styled.a`
+    text-decoration:none;
     display: block;
     text-transform:uppercase;
     font-weight: bold;

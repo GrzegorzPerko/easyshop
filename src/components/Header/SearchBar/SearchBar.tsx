@@ -7,7 +7,7 @@ const SearchBar = () => {
   return (
     <>
       <S.SearchBox>
-        <FontAwesomeIcon icon={faSearch} />
+        <S.SearchIcon><FontAwesomeIcon icon={faSearch} size={'lg'}/></S.SearchIcon>
         <S.SearchLabel>Search</S.SearchLabel>
         <S.SearchInput />
       </S.SearchBox>

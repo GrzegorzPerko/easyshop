@@ -14,6 +14,12 @@ export const SearchBox = styled.form`
   }
 `
 
+export const SearchIcon = styled.i`
+  width: 24px;
+  color: #1b1b1b;
+  margin-right: 10px;
+`
+
 export const SearchLabel = styled.label`
   display: block;
   text-transform:uppercase;

@@ -14,22 +14,26 @@ const NavHeader = () => {
     const products = (state: RootState) => state.cart.products
     const productsSelector: CartProduct[] = useSelector(products)
 
-    const handleClick = (event: React.MouseEvent) => {
+    const handleCartClick = (event: React.MouseEvent) => {
         setDropdownVisible(true)
         event.preventDefault()
     }
+    const handleCartClose = (event: React.MouseEvent) => {
+        setDropdownVisible(false)
+        event.preventDefault()
+    }
+
     return (
         <>
             <S.WrapperCart>
-        
                 <S.IconCart><FontAwesomeIcon icon={faShoppingCart} /></S.IconCart>
                 {productsSelector.length === 0 ? 
                 (<S.TitleCart>Koszyk ({productsSelector.length})</S.TitleCart>) : 
                 ( <>
-                <S.LinkCart href="#" onClick={handleClick}>Koszyk ({productsSelector.length})</S.LinkCart>
+                <S.LinkCart href="#" onClick={handleCartClick}>Koszyk ({productsSelector.length})</S.LinkCart>
                 <S.DropdownCart visible={dropdownVisible}>
                     <S.DropdownTitle>Zawartość koszyka:</S.DropdownTitle>
-                    <S.DropdownCloseBtnCart><FontAwesomeIcon icon={faTimes} size={'lg'}/></S.DropdownCloseBtnCart>
+                    <S.DropdownCloseBtnCart onClick={handleCartClose}><FontAwesomeIcon icon={faTimes} size={'lg'}/></S.DropdownCloseBtnCart>
                     <S.DropdownList>
                         {productsSelector.map((product) => (
                             <S.DropdownListItem>{product.title}</S.DropdownListItem>

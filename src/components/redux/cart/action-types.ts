@@ -21,11 +21,5 @@ type RemoveProductAction = {
     id: number
   }
 }
-const AddProduct = (product: CartProduct): AddProductAction => {
-    return {type: ADD_PRODUCT, payload: product}
-}
-const RemoveProduct = (id: number): RemoveProductAction => {
-    return {type: REMOVE_PRODUCT, meta: { id}}
-}
 
 export type CartActionTypes = AddProductAction | RemoveProductAction

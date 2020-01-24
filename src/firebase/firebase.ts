@@ -1,4 +1,4 @@
-import firebase from 'firebase';
+import firebase from 'firebase'
 
 const config = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -8,12 +8,13 @@ const config = {
   storageBucket: `${process.env.REACT_APP_FIREBASE_PROJECT_ID}.appspot.com`,
   messagingSenderId: process.env.REACT_APP_FIREBASE_SENDER_ID,
   appId: process.env.REACT_APP_FIREBASE_API_ID,
-  measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID
+  measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID,
+
 }
 
 class Firebase {
   constructor() {
-    firebase.initializeApp(config);
+    firebase.initializeApp(config)
   }
 }
 export default Firebase;

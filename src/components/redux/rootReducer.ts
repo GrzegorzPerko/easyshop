@@ -1,4 +1,3 @@
-import { stepReducer } from './step/reducer'
 import { cartReducer } from './cart/reducer'
 import { combineReducers } from 'redux'
 import { CartState } from './cart/action-types'
